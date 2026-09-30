@@ -1,16 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Pizza from "./Pizza";
-import Order from "./Order";
-import PizzaOfTheDay from "./PizzaOfTheDay";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { routeTree } from "./routeTree.gen";
 
+const router = createRouter({ routeTree });
+const queryClient = new QueryClient();
 const App = () => {
   return (
-    <div>
-      <h1 className="logo">Padre Gino's - Order Now</h1>
-      <Order />
-      <PizzaOfTheDay />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 };
 
