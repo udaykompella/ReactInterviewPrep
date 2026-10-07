@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { marked } from "marked";
 import MarkdownPreview from "./MarkdownPreview";
 import markdownContent from "./markdownContent";
@@ -18,7 +18,7 @@ export default function App() {
   const options = useMemo(() => {
     (text, theme);
   }, [text, theme]);
-  const render = (text) => marked.parse(text);
+  const render = useCallback((text) => marked.parse(text), []);
 
   return (
     <div className="app">
