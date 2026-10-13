@@ -1,29 +1,30 @@
 import { useState, useEffect, useTransition } from "react";
 import Score from "./Score";
 import getScore from "./getScore";
+import SlowSearch from "./SlowSearch";
 export default function App() {
-  const [isPending, startTransition] = useTransition();
-  const [game, setGame] = useState(1);
-  const [score, setScore] = useState({ home: "-", away: "-" });
+  // const [isPending, startTransition] = useTransition();
+  // const [game, setGame] = useState(1);
+  // const [score, setScore] = useState({ home: "-", away: "-" });
 
-  async function getNewScore(game) {
-    startTransition(async () => {
-      setGame(game);
-      const newScore = await getScore(game);
-      startTransition(() => {
-        setScore(newScore);
-      });
-    });
-  }
+  // async function getNewScore(game) {
+  //   startTransition(async () => {
+  //     setGame(game);
+  //     const newScore = await getScore(game);
+  //     startTransition(() => {
+  //       setScore(newScore);
+  //     });
+  //   });
+  // }
   // `loading-container ${isPending ? "loading" : ""}`
 
-  useEffect(() => {
-    getNewScore(game);
-  }, []);
+  // useEffect(() => {
+  //   getNewScore(game);
+  // }, []);
 
   return (
     <div className="app">
-      <h1>Game {game}</h1>
+      {/* <h1>Game {game}</h1>
       <select onChange={(e) => getNewScore(e.target.value)}>
         <option value={1}>Game 1</option>
         <option value={2}>Game 2</option>
@@ -46,7 +47,8 @@ export default function App() {
           home={score.home}
           away={score.away}
         />
-      </div>
+      </div> */}
+      <SlowSearch />
     </div>
   );
 }

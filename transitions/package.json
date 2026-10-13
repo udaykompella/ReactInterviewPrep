@@ -4,8 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev:client": "vite",
-    "dev:server": "node --watch server.js"
+    "dev:client": "vite"
   },
   "keywords": [],
   "author": "",
